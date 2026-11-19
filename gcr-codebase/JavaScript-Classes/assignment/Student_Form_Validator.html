@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form Validator</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 420px; margin: 30px auto; }
+        input { display: block; box-sizing: border-box; width: 100%; padding: 9px; margin: 6px 0 2px; border: 2px solid #aaa; }
+        .error { color: red; min-height: 18px; font-size: 13px; }
+        .valid { border-color: green; }
+        .invalid { border-color: red; }
+        button { padding: 9px 14px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Student Registration</h2>
+    <form id="studentForm" novalidate>
+        <label>Name <input id="name" type="text"></label><div id="nameError" class="error"></div>
+        <label>Email <input id="email" type="text"></label><div id="emailError" class="error"></div>
+        <label>Phone <input id="phone" type="text"></label><div id="phoneError" class="error"></div>
+        <label>Password <input id="password" type="password"></label><div id="passwordError" class="error"></div>
+        <button type="submit">Validate</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        const checks = {
+            name: /^[A-Za-z]+$/,
+            email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            phone: /^\d{10}$/,
+            password: /^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/
+        };
+        const messages = {
+            name: "Use alphabets only.",
+            email: "Enter a valid email address.",
+            phone: "Phone must contain exactly 10 digits.",
+            password: "Password needs an uppercase letter, a number, and a special character."
+        };
+
+        document.getElementById("studentForm").addEventListener("submit", event => {
+            event.preventDefault();
+            let allValid = true;
+
+            Object.keys(checks).forEach(field => {
+                const input = document.getElementById(field);
+                const error = document.getElementById(field + "Error");
+                const valid = checks[field].test(input.value.trim());
+                input.classList.toggle("valid", valid);
+                input.classList.toggle("invalid", !valid);
+                error.textContent = valid ? "" : messages[field];
+                if (!valid) allValid = false;
+            });
+
+            document.getElementById("result").textContent =
+                allValid ? "Registration details are valid." : "Please correct the errors above.";
+        });
+    </script>
+</body>
+</html>

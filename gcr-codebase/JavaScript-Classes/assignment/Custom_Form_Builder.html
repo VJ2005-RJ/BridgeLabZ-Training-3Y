@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Form Builder</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 480px; margin: 30px auto; }
+        label { display: block; margin: 12px 0; }
+        input, select { display: block; padding: 8px; width: 100%; box-sizing: border-box; margin-top: 5px; }
+        button { padding: 9px 14px; }
+        pre { background: #f3f3f3; padding: 12px; }
+    </style>
+</head>
+<body>
+    <h2>Dynamic Form Builder</h2>
+    <div id="formContainer"></div>
+    <pre id="output"></pre>
+    <script>
+        class FormBuilder {
+            constructor(fields, containerId) {
+                this.fields = fields;
+                this.container = document.getElementById(containerId);
+                this.render();
+            }
+
+            render() {
+                let html = '<form id="dynamicForm">';
+                this.fields.forEach((field, index) => {
+                    const id = `field${index}`;
+                    html += `<label for="${id}">${field.label}</label>`;
+                    if (field.type === "select") {
+                        html += `<select id="${id}" name="${field.name}">`;
+                        field.options.forEach(option => {
+                            html += `<option value="${option}">${option}</option>`;
+                        });
+                        html += "</select>";
+                    } else {
+                        html += `<input id="${id}" name="${field.name}" type="${field.type}">`;
+                    }
+                });
+                html += '<button type="submit">Submit</button></form>';
+                this.container.innerHTML = html;
+
+                document.getElementById("dynamicForm").addEventListener("submit", event => {
+                    event.preventDefault();
+                    document.getElementById("output").textContent =
+                        JSON.stringify(this.getFormData(), null, 2);
+                });
+            }
+
+            getFormData() {
+                const data = {};
+                this.fields.forEach((field, index) => {
+                    data[field.name] = document.getElementById(`field${index}`).value;
+                });
+                return data;
+            }
+        }
+
+        new FormBuilder([
+            { type: "text", label: "Username", name: "username" },
+            { type: "email", label: "Email", name: "email" },
+            { type: "select", label: "Course", name: "course", options: ["CSE", "IT", "ECE"] }
+        ], "formContainer");
+    </script>
+</body>
+</html>

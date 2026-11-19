@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form Validation</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 420px; margin: 30px auto; }
+        input { display: block; width: 100%; box-sizing: border-box; padding: 9px; margin: 6px 0 12px; }
+        button { padding: 9px 14px; }
+        #message { margin-top: 14px; }
+    </style>
+</head>
+<body>
+    <h2>Login Validation</h2>
+    <form id="loginForm" novalidate>
+        <label>Username <input id="username"></label>
+        <label>Password <input id="password" type="password"></label>
+        <button type="submit">Login</button>
+    </form>
+    <div id="message"></div>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", event => {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errors = [];
+
+            if (username.length < 5) errors.push("Username must contain at least 5 characters.");
+            if (password.length < 8) errors.push("Password must contain at least 8 characters.");
+            if (!/[0-9]/.test(password)) errors.push("Password must include a number.");
+            if (!/[A-Z]/.test(password)) errors.push("Password must include an uppercase letter.");
+            if (!/[a-z]/.test(password)) errors.push("Password must include a lowercase letter.");
+            if (!/[^A-Za-z0-9]/.test(password)) errors.push("Password must include a special character.");
+
+            document.getElementById("message").textContent =
+                errors.length ? errors.join(" ") : "Validation successful!";
+            document.getElementById("message").style.color = errors.length ? "red" : "green";
+        });
+    </script>
+</body>
+</html>
