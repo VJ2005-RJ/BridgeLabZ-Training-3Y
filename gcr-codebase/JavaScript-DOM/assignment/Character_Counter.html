@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Character Counter</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+        .container { max-width: 760px; margin: auto; }
+        input, button { padding: 9px 12px; margin: 5px 3px 5px 0; }
+        button { cursor: pointer; }
+        .message { margin-top: 10px; }
+        .error { color: #c62828; font-size: 14px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Live Character Counter</h1>
+        
+        <label for="messageBox">Write a message (maximum 100 characters):</label><br>
+        <textarea id="messageBox" rows="6" style="width:100%; max-width:600px;"
+                  maxlength="100" placeholder="Start typing..."></textarea>
+        <p id="characterCount" class="message">100 characters remaining</p>
+        <button id="resetButton">Reset</button>
+
+    </main>
+    <script src="Q2_Character_Counter.js"></script>
+</body>
+</html>

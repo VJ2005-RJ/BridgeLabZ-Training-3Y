@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submit Blocker with Live Errors</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+        .container { max-width: 760px; margin: auto; }
+        input, button { padding: 9px 12px; margin: 5px 3px 5px 0; }
+        button { cursor: pointer; }
+        .message { margin-top: 10px; }
+        .error { color: #c62828; font-size: 14px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Form Submit Blocker with Live Errors</h1>
+        
+        <form id="registrationForm" novalidate>
+            <div>
+                <label for="nameInput">Name</label><br>
+                <input type="text" id="nameInput" placeholder="Enter your name">
+                <p id="nameError" class="error"></p>
+            </div>
+            <div>
+                <label for="emailInput">Email</label><br>
+                <input type="text" id="emailInput" placeholder="Enter your email">
+                <p id="emailError" class="error"></p>
+            </div>
+            <div>
+                <label for="passwordInput">Password</label><br>
+                <input type="password" id="passwordInput" placeholder="At least 6 characters">
+                <p id="passwordError" class="error"></p>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="successMessage" style="color:green;"></p>
+
+    </main>
+    <script src="Q9_Form_Validation.js"></script>
+</body>
+</html>

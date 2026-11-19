@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Student Table Filter</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+        .container { max-width: 760px; margin: auto; }
+        input, button { padding: 9px 12px; margin: 5px 3px 5px 0; }
+        button { cursor: pointer; }
+        .message { margin-top: 10px; }
+        .error { color: #c62828; font-size: 14px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Real-Time Student Table Filter</h1>
+        
+        <label for="searchInput">Search students:</label>
+        <input type="text" id="searchInput" placeholder="Search name, branch or CGPA">
+        <table id="studentTable" border="1" cellpadding="10" cellspacing="0" style="width:100%; margin-top:12px; border-collapse:collapse;">
+            <thead><tr><th>Name</th><th>Branch</th><th>CGPA</th></tr></thead>
+            <tbody>
+                <tr><td>Vaibhav Jain</td><td>Computer Science</td><td>7.8</td></tr>
+                <tr><td>Riya Sharma</td><td>Information Technology</td><td>8.4</td></tr>
+                <tr><td>Arjun Singh</td><td>Electronics</td><td>7.2</td></tr>
+                <tr><td>Neha Verma</td><td>Computer Science</td><td>9.1</td></tr>
+                <tr><td>Karan Gupta</td><td>Mechanical</td><td>8.0</td></tr>
+            </tbody>
+        </table>
+        <p id="noResults" class="hidden">No results found</p>
+
+    </main>
+    <script src="Q6_Table_Filter.js"></script>
+</body>
+</html>

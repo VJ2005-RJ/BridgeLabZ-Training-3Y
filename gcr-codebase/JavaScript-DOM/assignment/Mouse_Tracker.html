@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Path and Coordinates Logger</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+        .container { max-width: 760px; margin: auto; }
+        input, button { padding: 9px 12px; margin: 5px 3px 5px 0; }
+        button { cursor: pointer; }
+        .message { margin-top: 10px; }
+        .error { color: #c62828; font-size: 14px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Mouse Path and Coordinates Logger</h1>
+        
+        <p>Move your mouse inside the box. Double-click to place a red dot.</p>
+        <div id="trackingBox" style="width:400px; height:400px; max-width:100%; border:2px solid #333; position:relative; background:#f3f3f3;"></div>
+        <p id="coordinates">clientX: --, clientY: --</p>
+
+    </main>
+    <script src="Q7_Mouse_Tracker.js"></script>
+</body>
+</html>

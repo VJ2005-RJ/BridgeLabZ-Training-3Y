@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Product List Manager</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+        .container { max-width: 760px; margin: auto; }
+        input, button { padding: 9px 12px; margin: 5px 3px 5px 0; }
+        button { cursor: pointer; }
+        .message { margin-top: 10px; }
+        .error { color: #c62828; font-size: 14px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Dynamic Product List Manager</h1>
+        
+        <p>Add products, edit their names directly in the list, or remove them.</p>
+        <input type="text" id="productInput" placeholder="Enter product name">
+        <button id="addProductButton">Add Product</button>
+        <ul id="productList"></ul>
+
+    </main>
+    <script src="Q1_Product_List.js"></script>
+</body>
+</html>

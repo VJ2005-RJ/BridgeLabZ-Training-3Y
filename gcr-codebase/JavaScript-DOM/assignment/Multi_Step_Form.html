@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Step Form</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; margin: 30px; color: #222; }
+        .container { max-width: 760px; margin: auto; }
+        input, button { padding: 9px 12px; margin: 5px 3px 5px 0; }
+        button { cursor: pointer; }
+        .message { margin-top: 10px; }
+        .error { color: #c62828; font-size: 14px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Three-Step Form</h1>
+        
+        <form id="multiStepForm">
+            <section class="form-step" data-step="0">
+                <h2>Step 1: Name</h2>
+                <label>Full name</label><br>
+                <input type="text" id="fullName" placeholder="Your name">
+            </section>
+            <section class="form-step hidden" data-step="1">
+                <h2>Step 2: Email</h2>
+                <label>Email address</label><br>
+                <input type="email" id="emailAddress" placeholder="name@example.com">
+            </section>
+            <section class="form-step hidden" data-step="2">
+                <h2>Step 3: Password</h2>
+                <label>Password (at least 6 characters)</label><br>
+                <input type="password" id="userPassword" placeholder="Enter password">
+            </section>
+            <p id="formError" class="error"></p>
+            <button type="button" id="backButton">Back</button>
+            <button type="button" id="nextButton">Next</button>
+        </form>
+        <section id="summary" class="hidden">
+            <h2>Form completed</h2>
+            <p id="summaryText"></p>
+        </section>
+
+    </main>
+    <script src="Q3_Multi_Step_Form.js"></script>
+</body>
+</html>
