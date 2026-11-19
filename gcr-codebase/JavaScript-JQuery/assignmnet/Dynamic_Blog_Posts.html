@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Admin</title>
+    <style>
+        body { font-family: Arial; margin: 25px; }
+        .post { padding: 12px; margin: 10px 0; border: 1px solid #aaa; }
+        .tag { color: #075; font-size: 13px; }
+        .important { background: #fff0b3; }
+        button { margin: 5px; padding: 7px; }
+    </style>
+</head>
+<body>
+    <header><h1>Blog Post Manager</h1></header>
+    <main>
+        <button id="add">Add New Post</button>
+        <button id="featured">Prepend Featured Post</button>
+        <button id="remove">Remove Last Post</button>
+        <div id="posts">
+            <article class="post"><h2>Learning jQuery</h2><p>jQuery makes web development easier.</p></article>
+            <article class="post"><h2>Study Tips</h2><p>Practice coding every day.</p></article>
+            <article class="post"><h2>Web Design</h2><p>Good design helps users.</p></article>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

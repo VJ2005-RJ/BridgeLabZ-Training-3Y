@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive FAQ</title>
+    <style>
+        body { font-family: Arial; margin: 25px; }
+        .faq { padding: 12px; border: 1px solid #ccc; margin: 10px 0; }
+        .question { cursor: pointer; }
+        .answer { display: none; }
+        input { padding: 6px; }
+    </style>
+</head>
+<body>
+    <header><h1>Frequently Asked Questions</h1></header>
+    <main>
+        <section class="faq">
+            <h3 class="question">What is jQuery?</h3>
+            <div class="answer"><p>jQuery is a JavaScript library.</p><input type="text" placeholder="Your comment"></div>
+        </section>
+        <section class="faq">
+            <h3 class="question">Is jQuery easy to use?</h3>
+            <div class="answer"><p>Yes, it makes JavaScript tasks easier.</p><input type="text" placeholder="Your comment"></div>
+        </section>
+        <section class="faq">
+            <h3 class="question">What is a selector?</h3>
+            <div class="answer"><p>A selector finds HTML elements.</p><input type="text" placeholder="Your comment"></div>
+        </section>
+        <section class="faq">
+            <h3 class="question">What does hide() do?</h3>
+            <div class="answer"><p>It hides the selected element.</p><input type="text" placeholder="Your comment"></div>
+        </section>
+        <section class="faq">
+            <h3 class="question">What does show() do?</h3>
+            <div class="answer"><p>It makes a hidden element visible.</p><input type="text" placeholder="Your comment"></div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

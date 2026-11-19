@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body { font-family: Arial; margin: 25px; }
+        label { display: block; margin-top: 12px; }
+        input { display: block; padding: 8px; width: 250px; }
+        button { margin-top: 15px; padding: 8px 14px; }
+        #message { margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <header><h1>Register</h1></header>
+    <main>
+        <form id="registerForm">
+            <label for="name">Name</label>
+            <input type="text" id="name">
+
+            <label for="email">Email</label>
+            <input type="text" id="email">
+
+            <label for="password">Password</label>
+            <input type="password" id="password">
+
+            <button type="submit">Register</button>
+        </form>
+        <p id="message"></p>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

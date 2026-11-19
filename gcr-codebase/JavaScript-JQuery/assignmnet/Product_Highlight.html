@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Highlight</title>
+    <style>
+        body { font-family: Arial; margin: 25px; }
+        .products { display: flex; flex-wrap: wrap; gap: 12px; }
+        .product { width: 160px; padding: 15px; border: 1px solid #aaa; }
+        .highlight { background: #fff2b3; }
+        .selected { border: 3px solid green; }
+        .discount { color: red; font-weight: bold; }
+        .details { display: none; }
+        button { cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header><h1>Our Products</h1></header>
+    <main class="products">
+        <article class="product" data-discount="yes" data-stock="yes">
+            <h3>Keyboard</h3><p>Rs. 900</p><button class="favorite">♡ Favorite</button>
+            <p class="details">Comfortable wired keyboard.</p>
+        </article>
+        <article class="product" data-stock="yes">
+            <h3>Mouse</h3><p>Rs. 400</p><button class="favorite">♡ Favorite</button>
+            <p class="details">Wireless optical mouse.</p>
+        </article>
+        <article class="product" data-discount="yes" data-stock="no">
+            <h3>Headphones</h3><p>Rs. 1200</p><button class="favorite">♡ Favorite</button>
+            <p class="details">Noise-reducing headphones.</p>
+        </article>
+        <article class="product" data-stock="yes">
+            <h3>Monitor</h3><p>Rs. 7000</p><button class="favorite">♡ Favorite</button>
+            <p class="details">Full HD display.</p>
+        </article>
+        <article class="product" data-discount="yes" data-stock="yes">
+            <h3>Webcam</h3><p>Rs. 1500</p><button class="favorite">♡ Favorite</button>
+            <p class="details">HD webcam for meetings.</p>
+        </article>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

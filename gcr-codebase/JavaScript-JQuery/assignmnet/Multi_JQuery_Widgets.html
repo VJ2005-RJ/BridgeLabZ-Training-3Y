@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple jQuery Versions</title>
+    <style>
+        body { font-family: Arial; margin: 25px; }
+        .widget { display: inline-block; padding: 15px; margin: 8px; border: 1px solid #aaa; }
+        .active { background: #d8edff; border: 2px solid blue; }
+        #modal { display: none; padding: 15px; background: #fff0b3; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <header><h1>Dashboard Widgets</h1></header>
+    <main>
+        <section id="carousel" class="widget">Slide 1</section>
+        <section class="widget" title="This is the weather widget">Weather Widget</section>
+        <section class="widget" title="This is the news widget">News Widget</section>
+        <section class="widget" title="This is the profile widget">Profile Widget</section>
+        <button id="notify">Show Notification</button>
+        <div id="modal">You have a new notification! <button id="close">Close</button></div>
+    </main>
+
+    <!-- Load two different jQuery versions. -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        var jq1 = jQuery.noConflict(true);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        var jq2 = jQuery.noConflict(true);
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

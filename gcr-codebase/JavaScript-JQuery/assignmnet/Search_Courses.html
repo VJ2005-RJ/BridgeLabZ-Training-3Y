@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Courses</title>
+    <style>
+        body { font-family: Arial; margin: 25px; }
+        li { padding: 8px; margin: 5px; background: #f1f1f1; }
+        .match { color: #c00; background: #fff0a8; }
+    </style>
+</head>
+<body>
+    <header><h1>Find a Course</h1></header>
+    <main>
+        <label for="search">Search courses:</label>
+        <input type="text" id="search" placeholder="Type course name">
+        <button id="clear">Clear Search</button>
+        <p id="count">Showing 5 courses</p>
+        <ul id="courseList">
+            <li>Java Programming</li>
+            <li>Python Basics</li>
+            <li>Web Development</li>
+            <li>Data Structures</li>
+            <li>Database Management</li>
+        </ul>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

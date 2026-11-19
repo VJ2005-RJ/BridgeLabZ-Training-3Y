@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Directory</title>
+    <style>
+        body { font-family: Arial; margin: 25px; }
+        .department { border: 1px solid #aaa; padding: 12px; margin: 12px 0; }
+        .member { padding: 7px; margin: 5px; background: #f2f2f2; }
+        .contact { display: none; color: #245; }
+        .highlight { background: #ffe28a; }
+        button { margin: 5px; }
+    </style>
+</head>
+<body>
+    <header><h1>Team Members</h1></header>
+    <main>
+        <section class="department">
+            <h2 class="deptName">Development</h2>
+            <div class="team">
+                <div class="member manager">Manager: Aman</div>
+                <div class="member employee">Riya <span class="contact">Email: riya@example.com</span></div>
+                <div class="member employee">Karan <span class="contact">Email: karan@example.com</span></div>
+            </div>
+            <button class="collapse">Collapse / Expand Team</button>
+        </section>
+        <section class="department">
+            <h2 class="deptName">Design</h2>
+            <div class="team">
+                <div class="member manager">Manager: Neha</div>
+                <div class="member employee">Simran <span class="contact">Email: simran@example.com</span></div>
+                <div class="member employee">Arjun <span class="contact">Email: arjun@example.com</span></div>
+            </div>
+            <button class="collapse">Collapse / Expand Team</button>
+        </section>
+        <button id="random">Select Random Employee</button>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
