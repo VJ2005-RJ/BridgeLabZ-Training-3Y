@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>College Timetable</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    table { border-collapse: collapse; margin-top: 15px; width: 500px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h2>College Timetable Viewer</h2>
+  <label>Select day: </label>
+  <select id="day">
+    <option>Monday</option><option>Tuesday</option><option>Wednesday</option>
+    <option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option>
+  </select>
+  <div id="result"></div>
+
+  <script>
+    function loadTimetable() {
+      let day = document.getElementById("day").value;
+      fetch("http://localhost:3005/timetable?day=" + day)
+        .then(response => response.json())
+        .then(classes => {
+          let result = document.getElementById("result");
+          if (classes.length === 0) {
+            result.innerHTML = "<p>No classes today.</p>";
+            return;
+          }
+          let html = "<table><tr><th>Subject</th><th>Faculty</th><th>Time</th></tr>";
+          classes.forEach(c => {
+            html += `<tr><td>${c.subject}</td><td>${c.faculty}</td><td>${c.time}</td></tr>`;
+          });
+          result.innerHTML = html + "</table>";
+        })
+        .catch(() => {
+          document.getElementById("result").innerText = "Unable to load timetable.";
+        });
+    }
+    document.getElementById("day").addEventListener("change", loadTimetable);
+    loadTimetable();
+  </script>
+</body>
+</html>

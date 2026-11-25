@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Status Dashboard</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    .row { padding: 12px; border: 1px solid #ccc; margin: 8px 0; width: 350px; }
+    .status { margin-left: 15px; }
+  </style>
+</head>
+<body>
+  <h2>Employee Status Dashboard</h2>
+  <p id="message"></p>
+  <div id="employees"></div>
+
+  <script>
+    function loadEmployees() {
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "http://localhost:3002/employees", true);
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          let employees = JSON.parse(xhr.responseText);
+          document.getElementById("employees").innerHTML = "";
+          employees.forEach(function (emp) {
+            let row = document.createElement("div");
+            row.className = "row";
+            row.innerHTML = `<b>${emp.name}</b>
+              <span class="status">${emp.status}</span>
+              <button>Toggle</button>`;
+            row.querySelector("button").onclick = function () {
+              toggleStatus(emp, row);
+            };
+            document.getElementById("employees").appendChild(row);
+          });
+        } else {
+          document.getElementById("message").innerText = "Could not load employees.";
+        }
+      };
+      xhr.onerror = function () {
+        document.getElementById("message").innerText = "Request failed.";
+      };
+      xhr.send();
+    }
+
+    function toggleStatus(emp, row) {
+      let oldStatus = emp.status;
+      let newStatus = oldStatus === "active" ? "inactive" : "active";
+      row.querySelector(".status").innerText = newStatus; // update UI immediately
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("PATCH", "http://localhost:3002/employees/" + emp.id, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          emp.status = newStatus;
+        } else {
+          row.querySelector(".status").innerText = oldStatus;
+          document.getElementById("message").innerText = "Error updating status. Please try again.";
+        }
+      };
+      xhr.onerror = function () {
+        row.querySelector(".status").innerText = oldStatus;
+        document.getElementById("message").innerText = "Network error. Status reverted.";
+      };
+      xhr.send(JSON.stringify({ status: newStatus }));
+    }
+
+    loadEmployees();
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Manager</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    .task { border: 1px solid #ccc; padding: 10px; margin: 8px 0; width: 360px; }
+  </style>
+</head>
+<body>
+  <h2>Task Manager</h2>
+  <label>Filter tasks: </label>
+  <select id="filter">
+    <option value="all">All Tasks</option>
+    <option value="Low">Low Priority</option>
+    <option value="Medium">Medium Priority</option>
+    <option value="High">High Priority</option>
+    <option value="completed">Completed</option>
+  </select>
+  <div id="tasks"></div>
+
+  <script>
+    function loadTasks() {
+      let filter = $("#filter").val();
+      let url = "http://localhost:3003/tasks";
+
+      if (filter === "Low" || filter === "Medium" || filter === "High") {
+        url += "?priority=" + filter;
+      } else if (filter === "completed") {
+        url += "?completed=true";
+      }
+
+      $.ajax({
+        url: url,
+        method: "GET",
+        success: function (tasks) {
+          $("#tasks").html("");
+          if (tasks.length === 0) {
+            $("#tasks").html("<p>No tasks found.</p>");
+            return;
+          }
+          tasks.forEach(function (task) {
+            $("#tasks").append(
+              `<div class="task">
+                <b>${task.title}</b><br>
+                Priority: ${task.priority}<br>
+                Completed:
+                <input type="checkbox" class="done" data-id="${task.id}" ${task.completed ? "checked" : ""}>
+              </div>`
+            );
+          });
+        },
+        error: function () {
+          $("#tasks").html("<p>Unable to load tasks.</p>");
+        }
+      });
+    }
+
+    $("#filter").on("change", loadTasks);
+
+    $("#tasks").on("change", ".done", function () {
+      let id = $(this).data("id");
+      let checkbox = $(this);
+      let newValue = checkbox.is(":checked");
+
+      $.ajax({
+        url: "http://localhost:3003/tasks/" + id,
+        method: "PATCH",
+        contentType: "application/json",
+        data: JSON.stringify({ completed: newValue }),
+        error: function () {
+          checkbox.prop("checked", !newValue);
+          alert("Could not update task.");
+        }
+      });
+    });
+
+    loadTasks();
+  </script>
+</body>
+</html>

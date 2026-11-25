@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multi API Dashboard</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    .card { display: inline-block; padding: 25px; margin: 10px; border: 1px solid #ccc; min-width: 130px; }
+    .skeleton { color: #888; }
+  </style>
+</head>
+<body>
+  <h2>Dashboard</h2>
+  <p id="warning"></p>
+  <div class="card">Total Users: <b id="users" class="skeleton">Loading...</b></div>
+  <div class="card">Total Orders: <b id="orders" class="skeleton">Loading...</b></div>
+  <div class="card">Total Products: <b id="products" class="skeleton">Loading...</b></div>
+
+  <script>
+    Promise.all([
+      fetch("http://localhost:3004/users"),
+      fetch("http://localhost:3004/orders"),
+      fetch("http://localhost:3004/products")
+    ])
+    .then(function (responses) {
+      if (responses.some(response => !response.ok)) {
+        throw new Error("API request failed");
+      }
+      return Promise.all(responses.map(response => response.json()));
+    })
+    .then(function (data) {
+      document.getElementById("users").innerText = data[0].length;
+      document.getElementById("orders").innerText = data[1].length;
+      document.getElementById("products").innerText = data[2].length;
+    })
+    .catch(function () {
+      document.getElementById("warning").innerText = "Some data could not be loaded.";
+      ["users", "orders", "products"].forEach(id => {
+        document.getElementById(id).innerText = "Unavailable";
+      });
+    });
+  </script>
+</body>
+</html>
